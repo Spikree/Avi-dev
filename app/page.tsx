@@ -1,8 +1,10 @@
 "use client";
 
 import blogApp from "./assets/blogApp.png";
-import Apple from "./assets/Apple.png"
-import Wrapper from "./assets/wrapper.png"
+import Apple from "./assets/Apple.png";
+import Wrapper from "./assets/wrapper.png";
+import pixelQuiz from "./assets/pixelQuiz.png";
+import workLink from "./assets/workLink.png";
 
 import { motion } from "framer-motion";
 import {
@@ -21,6 +23,31 @@ import Link from "next/link";
 import Image from "next/image";
 
 const projects = [
+  {
+    title: "worklink",
+    description:
+      "A smart freelance marketplace connecting employers with skilled freelancers through seamless job matching, bidding, and secure collaboration.",
+    image: workLink,
+    tags: [
+      "React",
+      "MongoDb",
+      "Tailwind CSS",
+      "TypeScript",
+      "socket io",
+      "zustand",
+    ],
+    link: "https://worklink-client.onrender.com/",
+    github: "https://github.com/stars/Spikree/lists/worklink",
+  },
+  {
+    title: "Pixel Quiz Quest",
+    description:
+      "A frontend quiz web application built for a frontend ui hackathon",
+    image: pixelQuiz,
+    tags: ["React", "ShadCn", "Tailwind CSS", "TypeScript"],
+    link: "https://pixel-quiz-seven.vercel.app/",
+    github: "https://github.com/Spikree/Pixel-Quiz",
+  },
   {
     title: "Blog Application",
     description:
