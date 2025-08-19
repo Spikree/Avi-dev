@@ -2,6 +2,7 @@
 
 import blogApp from "./assets/blogApp.png";
 import Apple from "./assets/Apple.png";
+import medicare from "./assets/medicare.png";
 import Wrapper from "./assets/wrapper.png";
 import pixelQuiz from "./assets/pixelQuiz.png";
 import workLink from "./assets/workLink.png";
@@ -23,6 +24,22 @@ import Link from "next/link";
 import Image from "next/image";
 
 const projects = [
+  {
+    title: "Medicare Pro",
+    description:
+      "A web application for managing patient records, medical history, and with doctor patient chat with AI assistance built with React and Node.js.",
+    image: medicare,
+    tags: [
+      "React",
+      "MongoDb",
+      "Tailwind CSS",
+      "TypeScript",
+      "socket io",
+      "zustand",
+    ],
+    link: "https://medicare-client.onrender.com/",
+    github: "https://github.com/Spikree/medicare-client.git",
+  },
   {
     title: "worklink",
     description:
