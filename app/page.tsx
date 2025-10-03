@@ -32,6 +32,7 @@ const projects = [
     tags: [
       "React",
       "MongoDb",
+      "Redis Db",
       "Tailwind CSS",
       "TypeScript",
       "socket io",
