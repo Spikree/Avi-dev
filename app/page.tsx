@@ -114,17 +114,20 @@ export default function Home() {
           </h2>
           <div className="flex gap-4 justify-center mb-12">
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://github.com" target="_blank">
+              <Link href="https://github.com/Spikree" target="_blank">
                 <Github className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://linkedin.com" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/avishkar-mahalingpure/"
+                target="_blank"
+              >
                 <Linkedin className="h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <Link href="mailto:contact@example.com">
+              <Link href="mailto:avimahalingpure10@gmail.com">
                 <Mail className="h-5 w-5" />
               </Link>
             </Button>
@@ -191,13 +194,21 @@ export default function Home() {
                   </div>
                   <div className="flex gap-4">
                     <Button variant="outline" size="sm" asChild>
-                      <Link href={project.github}>
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Github className="h-4 w-4 mr-2" />
                         Code
                       </Link>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
-                      <Link href={project.link}>
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Demo
                       </Link>
@@ -229,7 +240,7 @@ export default function Home() {
               <Code2 className="h-12 w-12 mb-4 mx-auto text-primary" />
               <h3 className="text-xl font-semibold mb-2">Frontend</h3>
               <p className="text-muted-foreground">
-                React,Vue.js, Next.js, TypeScript, Tailwind CSS
+                React js,Vue.js, Next.js, TypeScript, Tailwind CSS
               </p>
             </motion.div>
             <motion.div
@@ -242,7 +253,7 @@ export default function Home() {
               <Database className="h-12 w-12 mb-4 mx-auto text-primary" />
               <h3 className="text-xl font-semibold mb-2">Backend</h3>
               <p className="text-muted-foreground">
-                Node.js, Express, PostgreSQL, MongoDb
+                Node.js, Express, PostgreSQL, MongoDb, MySQL, Redis DB
               </p>
             </motion.div>
             <motion.div

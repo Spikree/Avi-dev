@@ -6,9 +6,16 @@ import { Button } from "@/components/ui/button";
 
 export function AboutSection() {
   const handleDownloadResume = () => {
-    // Replace with actual resume file URL
-    const resumeUrl = "/resume.pdf";
-    window.open(resumeUrl, "_blank");
+    const resumeUrl = "app/assets/Avishkar_Resume.pdf";
+
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+
+    link.download = "Avishkar_Resume.pdf";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -29,16 +36,18 @@ export function AboutSection() {
           className="space-y-6 text-lg text-muted-foreground"
         >
           <p>
-            With over 1 year of experience in full-stack development, I specialize in building scalable web applications
-            and innovative solutions that solve real-world problems.
+            With over 1 year of experience in full-stack development, I
+            specialize in building scalable web applications and innovative
+            solutions that solve real-world problems.
           </p>
           <p>
-            My journey in technology began with a Computer Science degree, and since then, I've worked with startups
-            and enterprise companies, leading teams and delivering impactful projects.
+            I love building fullstack applications be it mobile or on the web, I
+            am also specalised in integrating and using AI for faster
+            developement.
           </p>
           <p>
-            When I'm not coding, you can find me contributing to open-source projects, writing technical blog posts,
-            or mentoring aspiring developers.
+            If you want to colobrate on a project, please don't be afraid to
+            connect with me. I'm always open to new oppourtinities.
           </p>
           <div className="pt-8 flex justify-center">
             <Button onClick={handleDownloadResume} size="lg">
