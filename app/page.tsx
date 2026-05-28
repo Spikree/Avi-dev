@@ -6,6 +6,7 @@ import medicare from "./assets/medicare.png";
 import Wrapper from "./assets/wrapper.png";
 import pixelQuiz from "./assets/pixelQuiz.png";
 import workLink from "./assets/workLink.png";
+import openbook from "./assets/openbook.png";
 
 import { motion } from "framer-motion";
 import {
@@ -40,6 +41,25 @@ const projects = [
     ],
     link: "https://medicare-client.onrender.com/",
     github: "https://github.com/Spikree/medicare-client.git",
+  },
+  {
+    title: "OpenBook",
+    description:
+      "OpenBook is an opensource clone of notebook LLM which is a local first learning platform for people with learning disabilities, it works with using localy run AI models through Ollama. I have also integrated disability friendly settings for people with visual imparements",
+    image: openbook,
+    tags: [
+      "React",
+      "PostgreSQL",
+      "Shadcn",
+      "Ollama",
+      "FastAPI",
+      "Tailwind CSS",
+      "TypeScript",
+      "Python",
+      "zustand",
+    ],
+    // link: "https://medicare-client.onrender.com/",
+    github: "https://github.com/Spikree/openbook.git",
   },
   {
     title: "worklink",
@@ -203,16 +223,28 @@ export default function Home() {
                         Code
                       </Link>
                     </Button>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    {project?.link ? (
+                      <Button variant="outline" size="sm" asChild>
+                        <Link
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Demo
+                        </Link>
+                      </Button>
+                    ) : (
+                      <Button
+                        disabled
+                        variant="outline"
+                        size="sm"
+                        className="cursor-not-allowed"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Demo
-                      </Link>
-                    </Button>
+                      </Button>
+                    )}
                   </div>
                 </div>
               </motion.div>
