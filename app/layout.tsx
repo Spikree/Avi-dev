@@ -1,10 +1,21 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Providers } from "./providers";
+import type { Metadata, Viewport } from "next";
+import { DM_Mono, DM_Sans, Fraunces } from "next/font/google";
 import { profile } from "@/lib/data";
 
-const geist = Geist({ subsets: ["latin"] });
+// Fraunces with SOFT maxed out gives the chunky Cooper-style 70s display face.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+});
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-body" });
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
 
 const title = `${profile.name} — ${profile.role}`;
 const description =
@@ -28,16 +39,21 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#F4EAD5",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={geist.className}>
-        <Providers>{children}</Providers>
-      </body>
+    <html
+      lang="en"
+      className={`scroll-smooth ${fraunces.variable} ${dmSans.variable} ${dmMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }

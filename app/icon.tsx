@@ -14,11 +14,12 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#171717",
-          color: "#fafafa",
-          borderRadius: 14,
-          fontSize: 30,
-          fontWeight: 600,
+          background: "#E5622A",
+          border: "4px solid #2A1A11",
+          color: "#2A1A11",
+          borderRadius: 32,
+          fontSize: 28,
+          fontWeight: 700,
           letterSpacing: -1,
         }}
       >

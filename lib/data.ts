@@ -38,12 +38,12 @@ export const experience = [
 
 export const education = [
   {
-    period: "2026",
+    period: "Sep 2025 – Sep 2026",
     degree: "MSc Advanced Computer Science",
     school: "University of Strathclyde",
   },
   {
-    period: "2025",
+    period: "2021 – 2025",
     degree: "BSc Computer Science",
     school: "Sharad Institute of Technology",
   },
@@ -121,13 +121,6 @@ export const projects: Project[] = [
     link: "https://apple-website-clone-6the.onrender.com/",
     github: "https://github.com/Spikree/apple-website-clone-",
   },
-];
-
-export const facts = [
-  { label: "Currently", value: "MSc Advanced Computer Science, University of Strathclyde" },
-  { label: "Looking for", value: "Graduate software engineering roles" },
-  { label: "Experience", value: "2 software engineering internships" },
-  { label: "Core stack", value: "Java, Spring Boot, TypeScript, React, Node.js, PostgreSQL" },
 ];
 
 export const skills = [

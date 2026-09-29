@@ -2,57 +2,287 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 70s print poster: cream paper with grain, Cooper-style soft serif display,
+   racing stripes in mustard / tang / rust / cocoa, hard offset shadows. */
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 42%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 0 0% 9%;
-    --radius: 0.5rem;
+    --paper: #f4ead5;
+    --paper-light: #fbf5e8;
+    --paper-deep: #eadbbe;
+    --ink: #2a1a11;
+    --ink-soft: #5b4334;
+    --tang: #e5622a;
+    --mustard: #efaa31;
+    --rust: #a93a14;
+    --avocado: #56631f;
+    --cocoa: #6b4226;
   }
-  .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 92%;
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 92%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 92%;
-    --primary: 0 0% 92%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 13%;
-    --secondary-foreground: 0 0% 92%;
-    --muted: 0 0% 13%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 13%;
-    --accent-foreground: 0 0% 92%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 83%;
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Paper grain over everything, like an old offset print */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .1 0 0 0 0 .07 0 0 0 -1.6 1.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, serif;
+    font-variation-settings: "SOFT" 100;
+    font-weight: 750;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background: var(--mustard);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 3px dashed var(--rust);
+    outline-offset: 3px;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .display {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 900;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    letter-spacing: -0.025em;
+    line-height: 0.9;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
+
+  /* The stacked mustard / tang / rust drop shadow of a 70s album cover */
+  .shadow-stack {
+    text-shadow:
+      0.03em 0.03em 0 var(--mustard),
+      0.06em 0.06em 0 var(--tang),
+      0.09em 0.09em 0 var(--rust);
+  }
+
+  .kicker {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    box-shadow: 4px 4px 0 0 var(--btn-shadow, var(--ink));
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease;
+  }
+  .btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--btn-shadow, var(--ink));
+  }
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--btn-shadow, var(--ink));
+  }
+  .btn-tang {
+    background: var(--tang);
+  }
+  .btn-mustard {
+    background: var(--mustard);
+  }
+  .btn-paper {
+    background: var(--paper-light);
+  }
+  .btn-sm {
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    box-shadow: 3px 3px 0 0 var(--btn-shadow, var(--ink));
+  }
+  .btn-sm:hover {
+    box-shadow: 4px 4px 0 0 var(--btn-shadow, var(--ink));
+  }
+
+  /* Card with a hard offset shadow; set --shadow to recolour it */
+  .card {
+    background: var(--paper-light);
+    border: 2px solid var(--ink);
+    border-radius: 26px;
+    box-shadow: 6px 6px 0 0 var(--shadow, var(--ink));
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .card-lift:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 0 var(--shadow, var(--ink));
+  }
+
+  .chip {
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    border: 1.5px solid currentColor;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* Screenshots get a faded print look until you hover them */
+  .print-img {
+    filter: sepia(0.35) saturate(1.15) contrast(1.03);
+    transition:
+      filter 0.4s ease,
+      transform 0.6s ease;
+  }
+  .group:hover .print-img,
+  .group:focus-visible .print-img {
+    filter: none;
+    transform: scale(1.04);
+  }
+
+  /* Four flat racing stripes */
+  .stripes {
+    display: grid;
+  }
+  .stripes > span {
+    height: var(--stripe, 10px);
+  }
+  .stripes > span:nth-child(1) {
+    background: var(--mustard);
+  }
+  .stripes > span:nth-child(2) {
+    background: var(--tang);
+  }
+  .stripes > span:nth-child(3) {
+    background: var(--rust);
+  }
+  .stripes > span:nth-child(4) {
+    background: var(--cocoa);
+  }
+
+  /* Racing stripes that come in from the right, bend down the left of the
+     timeline and bend back out at the bottom. Each band is a bordered box
+     inset by one stripe width, so the corners stay concentric. */
+  .rail {
+    --w: 6px;
+    --r: 44px;
+    position: absolute;
+    inset: 0 -100vw 0 0;
+    pointer-events: none;
+  }
+  .rail > span {
+    position: absolute;
+    inset: calc(var(--i) * var(--w)) 0 calc(var(--i) * var(--w))
+      calc(var(--i) * var(--w));
+    border: var(--w) solid var(--c);
+    border-right: 0;
+    border-radius: calc(var(--r) - var(--i) * var(--w)) 0 0
+      calc(var(--r) - var(--i) * var(--w));
+  }
+  @media (min-width: 768px) {
+    .rail {
+      --w: 10px;
+      --r: 80px;
+    }
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--duration, 50s) linear infinite;
+  }
+  .marquee-reverse {
+    animation-direction: reverse;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Sunburst rays behind the sun, faded out at the edges */
+  .rays {
+    background: repeating-conic-gradient(
+      from -4deg,
+      var(--ray, rgb(239 170 49 / 0.4)) 0deg 8deg,
+      transparent 8deg 20deg
+    );
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+    mask-image: radial-gradient(closest-side, #000 35%, transparent);
+  }
+
+  .spin-slow {
+    animation: spin 24s linear infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    margin: 0.08em 0.12em 0 0;
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 4.6em;
+    font-weight: 900;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+    line-height: 0.8;
+    color: var(--rust);
+    text-shadow: 0.04em 0.04em 0 var(--mustard);
+  }
+
+  /* Fade and slide in on first scroll into view; see components/reveal.tsx */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px) rotate(-0.6deg);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track,
+  .spin-slow {
+    animation: none;
+  }
+  .btn,
+  .card,
+  .print-img {
+    transition: none;
   }
 }
